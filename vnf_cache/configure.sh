@@ -4,8 +4,7 @@ if [ $server_shared_int_network_floatingIp ]
 then
     SERVER_IP_ADDR=$server_shared_int_network_floatingIp
 else
-    #SERVER_IP_ADDR=$server_private_floatingIp
-    SERVER_IP_ADDR=192.168.1.47
+    SERVER_IP_ADDR=$server_private_floatingIp
 fi
 
 # TODO update with the floating IP
