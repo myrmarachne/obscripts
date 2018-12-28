@@ -2,8 +2,12 @@
 
 if [ $server_shared_int_network_floatingIp ]
 then
+    touch /root/iperf-server-ip
+    echo "$server_shared_int_network_floatingIp" > /root/iperf-server-ip
     SERVER_IP_ADDR=$server_shared_int_network_floatingIp
 else
+    touch /root/iperf-server-ip
+    echo "$server_private_floatingIp" > /root/iperf-server-ip
     SERVER_IP_ADDR=$server_private_floatingIp
 fi
 
