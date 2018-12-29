@@ -15,6 +15,9 @@ touch /root/cache-ip
 if [ $private_floatingIp ]
 then
     echo $private_floatingIp > /root/cache-ip
+else
+    echo $client_private_floatingIp > /root/cache-ip
+
 fi
 
 
