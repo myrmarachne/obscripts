@@ -1,5 +1,14 @@
  #!/bin/bash
 
+if [ $server_shared_int_network_floatingIp ]
+then
+    touch /root/iperf-server-ip
+    echo "$server_shared_int_network_floatingIp" > /root/iperf-server-ip
+else
+    touch /root/iperf-server-ip
+    echo "$server_private_floatingIp" > /root/iperf-server-ip
+fi  
+
 touch /root/cache-ip
 echo $private_floatingIp > /root/cache-ip
 IP_ADDR=$private_floatingIp
