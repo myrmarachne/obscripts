@@ -10,10 +10,10 @@ SERVER_IP_ADDR=$server_private_floatingIp
 
 touch /root/cache-ip
 
-if [ $private_floatingIp ]
+#if [ $private_floatingIp ]
     echo $private_floatingIp > /root/cache-ip
     IP_ADDR=$private_floatingIp
-fi
+#fi
 
 tmpfile=$(mktemp /tmp/squid.conf.XXXXXX)
 CONFIG_FILE=/etc/squid3/squid.conf
