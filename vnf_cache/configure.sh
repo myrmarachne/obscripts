@@ -1,23 +1,19 @@
  #!/bin/bash
 
-if [ $server_private_floatingIp ]
-then
-    touch /root/server-ip
-    echo "$server_private_floatingIp" > /root/server-ip
-    SERVER_IP_ADDR=$server_private_floatingIp
-fi
+touch /root/server-ip
+
+#if [ $server_private_floatingIp ]
+#then
+echo $server_private_floatingIp > /root/server-ip
+SERVER_IP_ADDR=$server_private_floatingIp
+#fi
 
 touch /root/cache-ip
+
 if [ $private_floatingIp ]
-then
-    #echo $private_floatingIp > /root/cache-ip
-#else
-    echo $client_private_floatingIp > /root/cache-ip
+    echo $private_floatingIp > /root/cache-ip
+    IP_ADDR=$private_floatingIp
 fi
-
-
-# TODO update with the floating IP
-export IP_ADDR=$(ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1')
 
 tmpfile=$(mktemp /tmp/squid.conf.XXXXXX)
 CONFIG_FILE=/etc/squid3/squid.conf
