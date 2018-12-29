@@ -1,11 +1,7 @@
  #!/bin/bash
 
-if [ $server_shared_int_network_floatingIp ]
+if [ $server_private_floatingIp ]
 then
-    touch /root/server-ip
-    echo "$server_shared_int_network_floatingIp" > /root/server-ip
-    SERVER_IP_ADDR=$server_shared_int_network_floatingIp
-else
     touch /root/server-ip
     echo "$server_private_floatingIp" > /root/server-ip
     SERVER_IP_ADDR=$server_private_floatingIp
@@ -14,10 +10,9 @@ fi
 touch /root/cache-ip
 if [ $private_floatingIp ]
 then
-    echo $private_floatingIp > /root/cache-ip
-else
+    #echo $private_floatingIp > /root/cache-ip
+#else
     echo $client_private_floatingIp > /root/cache-ip
-
 fi
 
 
