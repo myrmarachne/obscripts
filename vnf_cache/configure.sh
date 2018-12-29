@@ -1,19 +1,9 @@
  #!/bin/bash
 
-touch /root/server-ip
-
-#if [ $server_private_floatingIp ]
-#then
-echo $server_private_floatingIp > /root/server-ip
-SERVER_IP_ADDR=$server_private_floatingIp
-#fi
-
 touch /root/cache-ip
+echo $private_floatingIp > /root/cache-ip
+IP_ADDR=$private_floatingIp
 
-#if [ $private_floatingIp ]
-    echo $private_floatingIp > /root/cache-ip
-    IP_ADDR=$private_floatingIp
-#fi
 
 tmpfile=$(mktemp /tmp/squid.conf.XXXXXX)
 CONFIG_FILE=/etc/squid3/squid.conf
