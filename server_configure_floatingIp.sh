@@ -1,12 +1,9 @@
 #!/bin/bash
 
+touch /root/server-ip
 if [ $server_shared_int_network_floatingIp ]
 then
-    touch /root/iperf-server-ip
-    echo "$server_shared_int_network_floatingIp" > /root/iperf-server-ip
-    #screen -d -m -S client iperf -c $server_shared_int_network_floatingIp -t 20
+    echo "$server_shared_int_network_floatingIp" > /root/server-ip
 else
-    touch /root/iperf-server-ip
-    echo "$server_private_floatingIp" > /root/iperf-server-ip
-    #screen -d -m -S client iperf -c $server_private_floatingIp -t 20
+    echo "$server_private_floatingIp" > /root/server-ip
 fi 

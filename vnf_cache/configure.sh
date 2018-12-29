@@ -4,6 +4,7 @@ touch /root/cache-ip
 echo $private_floatingIp > /root/cache-ip
 IP_ADDR=$private_floatingIp
 
+SERVER_IP_ADDR=`(sudo cat /root/server-ip)`
 
 tmpfile=$(mktemp /tmp/squid.conf.XXXXXX)
 CONFIG_FILE=/etc/squid3/squid.conf
