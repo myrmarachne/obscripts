@@ -10,11 +10,16 @@ sudo a2enmod ext_filter
 
 git clone https://github.com/myrmarachne/obscripts
 
-cd obscripts/webserver
+cd obscripts
 
-# Append each of the configuration files to the main config file
-for filename in ./*.conf; do
-    cat "$filename" | sudo tee -a /etc/apache2/apache2.conf
-done
+# Create the directory with data
+sudo mkdir /var/www/data
+
+# Copy the data.zip file to data
+sudo mv data.zip /var/www/data/data.zip
+
+cd webserver
+
+sudo mv apache2.conf /etc/apache2/apache2.conf
 
 sudo service apache2 restart
