@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get update && sudo apt-get install -y apache2 git-core
+sudo apt-get update && sudo apt-get install -y apache2 git-core sysstat
 
 iptables -I INPUT -p tcp --dport 80 -j ACCEPT
 
@@ -23,3 +23,8 @@ cd webserver
 sudo mv apache2.conf /etc/apache2/apache2.conf
 
 sudo service apache2 restart
+
+# Configure the sysstat - enable data collecting
+sudo sed -i -e 's/ENABLED="false"/ENABLED="true"/' /etc/default/sysstat
+
+sudo service sysstat restart
