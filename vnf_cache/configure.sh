@@ -36,3 +36,8 @@ trap "rm -f '$tmpfile'" exit
 echo $IP_ADDR $DOMAINNAME | sudo tee -a /etc/hosts
 
 sudo service squid3 restart
+
+# Configure the sysstat - enable data collecting
+sudo sed -i -e 's/ENABLED="false"/ENABLED="true"/' /etc/default/sysstat
+
+sudo service sysstat restart
