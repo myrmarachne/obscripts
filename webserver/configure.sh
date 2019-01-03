@@ -1,6 +1,5 @@
 # Enabled the following apache modules
 sudo a2enmod headers
-sudo a2enmod ext_filter
 
 git clone https://github.com/myrmarachne/obscripts
 
@@ -43,4 +42,4 @@ EOF
 sudo mv $tmpfile /etc/cron.d/sysstat
 trap "rm -f '$tmpfile'" exit
 
-sudo service crond restart
+sudo service cron restart

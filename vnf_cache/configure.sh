@@ -62,4 +62,4 @@ EOF
 sudo mv $tmpfile /etc/cron.d/sysstat
 trap "rm -f '$tmpfile'" exit
 
-sudo service crond restart
+sudo service cron restart
