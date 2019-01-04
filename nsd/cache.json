@@ -1,5 +1,5 @@
 {
-  "name":"webserver + cache",
+  "name":"webserver + cache (qos)",
   "vendor":"FOKUS",
   "version":"1.0",
   "vld":[
@@ -9,21 +9,21 @@
   ],
   "vnfd":[
     {
-      "name":"cache",
+      "name":"cache_qos",
       "vendor":"FOKUS",
       "version":"1.0",
       "lifecycle_event":[
+        {
+          "event":"INSTANTIATE",
+          "lifecycle_events":[
+            "vnf_cache/install.sh"
+          ]
+        },
         {
           "event":"CONFIGURE",
           "lifecycle_events":[
             "server_configure_floatingIp.sh",
             "vnf_cache/configure.sh"
-          ]
-        },
-        {
-          "event":"INSTANTIATE",
-          "lifecycle_events":[
-            "vnf_cache/install.sh"
           ]
         }
       ],
@@ -49,7 +49,10 @@
       ],
       "virtual_link":[
         {
-          "name":"private"
+          "name":"private",
+          "qos":[
+            "maximum_bandwith:BRONZE"
+           ]
         }
       ],
       "deployment_flavour":[
@@ -62,7 +65,7 @@
       "vnfPackageLocation":"https://github.com/myrmarachne/obscripts.git"
     },
     {
-      "name":"webserver",
+      "name":"webserver_qos",
       "vendor":"FOKUS",
       "version":"1.0",
       "lifecycle_event":[
@@ -71,11 +74,20 @@
           "lifecycle_events":[
             "webserver/install.sh"
           ]
+        },
+        {
+          "event":"CONFIGURE",
+          "lifecycle_events":[
+            "webserver/configure.sh"
+          ]
         }
       ],
       "virtual_link":[
         {
-          "name":"private"
+          "name":"private",
+          "qos":[
+            "maximum_bandwith:BRONZE"
+           ]
         }
       ],
       "deployment_flavour":[
@@ -111,10 +123,10 @@
    "vnf_dependency":[
     {
       "source":{
-        "name":"webserver"
+        "name":"webserver_qos"
       },
       "target":{
-        "name":"cache"
+        "name":"cache_qos"
       },
       "parameters":[
         "private_floatingIp"

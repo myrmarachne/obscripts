@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Enabled the following apache modules
 sudo a2enmod headers
 
@@ -10,6 +12,7 @@ sudo mkdir /var/www/data
 
 # Copy the data.zip file to data
 sudo mv data.zip /var/www/data/data.zip
+sudo mv sample.zip /var/www/data/sample.zip
 
 cd webserver
 
